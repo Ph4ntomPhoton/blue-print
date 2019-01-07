@@ -1,0 +1,21 @@
+body {
+	color:hsla(210, 100%, 75%, 1.0);
+	font-size:1em;
+	background:#001f3f;
+}
+ul {
+	width: 50%;
+	float:left;
+	/*margin:0;
+	padding: 0;*/
+	box-sizing: border-box;
+	/*color:white;*/
+	font-weight: 600;
+}
+ul li {
+	padding:5px;
+	list-style: none;
+}
+.tasklist {
+	font-size:37px;
+}
