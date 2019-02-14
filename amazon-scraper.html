@@ -3,24 +3,31 @@
 <head>
 	<title>Amazon Scraper</title>
 </head>
-<body>
+<body onload="putResult()">
 <input type="text" id="input-field">
 <input type="button" id="submit-btn" value="submit" onclick="scrape()">
+<div id="result">
+Result will show here;
+</div>
 <script>
+	function putResult(){
+		if(localStorage['myKey']){
+			document.getElementById('result').innerHTML=localStorage['myKey'];
+		}
+	}
 	function scrape(){
 		var myStr = document.getElementById('input-field').value;
 	    var ASINlist = myStr.split(", ");
 	    // https://www.amazon.co.uk/gp/offer-listing/B000WKSZ7S
 	    // Display array values on page
-	    var list = [];
 		// list.push("baz", "qux", "etcetera");
 		// ["foo", "bar", "baz", "qux", "etcetera"]
+		var list='';
 	    for(var i = 0; i < ASINlist.length; i++){
-	        list.push("<a href=\"https://amazon.co.uk/gp/offer-listing/"+ASINlist[i]+"\">Product-"+i+"</a>");
+	        list+="<a href=\"https://amazon.co.uk/gp/offer-listing/"+ASINlist[i]+"\">Product-"+i+"</a><br>"
 	    }
-	    for(var i = 0; i < list.length; i++){
-	        document.write(list[i]+"<br>");
-	    }
+		localStorage['myKey'] = list;
+		document.getElementById('result').innerHTML=list;
 // B00028OSSU, B000WKW6QO, B0014291SA, B00822YO96, B0001TJX2Q, B006IB7PA8, B019ZYE9DA, B072KCDJJP, B0041XOWQA, B01KL1F426, B000MMWJHI
 	}
 </script>
